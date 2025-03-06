@@ -1,5 +1,12 @@
+import TableComp from "./pages/table/tableComp";
+
 const App = () => {
-  return <div>Task</div>;
+  return (
+    <div>
+      Task
+      <TableComp />
+    </div>
+  );
 };
 
 export default App;
