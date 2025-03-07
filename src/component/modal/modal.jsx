@@ -1,13 +1,28 @@
 import React from "react";
-
-const Modal = ({ isOpen, title, content, children }) => {
+import "./modal.css";
+const Modal = ({ isOpen, name, title, content, children, setOpen }) => {
   return (
-    <div className="overlay">
-      <section className="modal-header">{title}</section>
+    <>
+      {isOpen && (
+        <div className="overlay">
+          <div className="modal-box">
+            <section className="modal-header">
+              <h3>{title}</h3>
+              <button onClick={() => setOpen(false)} className="close">
+                close
+              </button>
+            </section>
 
-      {content}
-      {children}
-    </div>
+            <p className="modal-content">{content}</p>
+            {children}
+          </div>
+        </div>
+      )}
+      <button className="modal-name" onClick={() => setOpen(true)}>
+        {" "}
+        {name}
+      </button>
+    </>
   );
 };
 
