@@ -1,0 +1,18 @@
+.dnd-container {
+  display: flex;
+}
+
+.todo {
+  background: blue;
+}
+
+.progrss {
+  background: yellow;
+}
+
+.list-item {
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 3px;
+}

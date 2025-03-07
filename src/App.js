@@ -1,9 +1,11 @@
+import Dnd from "./pages/dnd/dnd";
 import TableComp from "./pages/table/tableComp";
 
 const App = () => {
   return (
     <div>
-      <TableComp />
+      {/* <TableComp /> */}
+      <Dnd />
     </div>
   );
 };
