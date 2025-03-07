@@ -6,10 +6,13 @@
   font-family: "Poppins", sans-serif;
 }
 
+.container {
+  padding: 30px;
+}
 table {
   width: 100%;
   border-collapse: collapse;
-  padding: 30px;
+  margin-top: 30px;
 }
 th {
   font-size: 1.5rem;
@@ -25,4 +28,20 @@ thead {
 }
 tbody > tr:nth-child(even) {
   background: #dddddd;
+}
+
+th > h3 {
+  display: flex;
+  align-items: center;
+}
+span.asc {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 100;
+}
+span.desc {
+  transform: rotateX(180deg);
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 100;
 }

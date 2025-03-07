@@ -1,58 +1,10 @@
 import React, { useEffect, useState } from "react";
-
+import { data } from "../../component/data/data";
 const TableComp = () => {
   const [sort, setSort] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
   const [fillterdata, setFilterData] = useState([]);
-  const data = [
-    {
-      name: "surya",
-      emp: "12131",
-      role: "MERN stack",
-    },
-    {
-      name: "king",
-      emp: "33333",
-      role: "HR",
-    },
-    {
-      name: "raja",
-      emp: "4444",
-      role: "TESTER",
-    },
-    {
-      name: "surya5656",
-      emp: "10001",
-      role: "MERN stack",
-    },
-    {
-      name: "king54456",
-      emp: "33000",
-      role: "HR",
-    },
-    {
-      name: "raja534",
-      emp: "44000",
-      role: "TESTER",
-    },
-    {
-      name: "surya345",
-      emp: "10131",
-      role: "MERN stack",
-    },
-    {
-      name: "king4356",
-      emp: "30333",
-      role: "HR",
-    },
-    {
-      name: "raja23",
-      emp: "48844",
-      role: "TESTER",
-    },
-  ];
-
   const role = ["MERN STACK", "HR", "TESTER"];
   const header = ["Name", "Emp", "Role"];
 
@@ -77,18 +29,68 @@ const TableComp = () => {
         );
       });
     }
-    setFilterData(filterData);
-  }, [search, filter]);
+
+    setFilterData(
+      filterData.sort((a, b) => {
+        for (let rule of sort) {
+          const key = rule.name.toLowerCase();
+          const order = rule.order;
+          if (a[key] < b[key]) return order === "asc" ? -1 : 1;
+          if (a[key] > b[key]) return order === "asc" ? 1 : -1;
+        }
+        return 0;
+      })
+    );
+  }, [search, filter, sort]);
 
   const handleSort = (sortname) => {
-    console.log(sortname);
+    const anySortData = sort.find((item) => {
+      return item.name === sortname;
+    });
+    if (!anySortData) {
+      setSort([...sort, { name: sortname, order: "asc" }]);
+    } else {
+      setSort(
+        sort
+          .map((item) =>
+            item.name === sortname
+              ? {
+                  ...item,
+                  order:
+                    item.order === "asc"
+                      ? "desc"
+                      : item.order === ""
+                      ? "asc"
+                      : "",
+                }
+              : item
+          )
+          .filter((item) => item.order)
+      );
+    }
   };
 
+  const handleIcon = (headname) => {
+    let header = sort.find((item) => item?.name === headname);
+    if (header) {
+      return (
+        <h5>
+          {header?.name}
+          <span className={header?.order}>^</span>
+        </h5>
+      );
+    } else {
+      return headname;
+    }
+  };
   return (
-    <>
+    <div className="container">
       TableComp
       <input
         placeholder="search..."
+        name="search"
+        value={search}
+        className="search"
         onChange={(e) => setSearch(e.target.value)}
       />
       <select onChange={(e) => setFilter(e.target.value)}>
@@ -107,7 +109,7 @@ const TableComp = () => {
             {header.map((item, i) => {
               return (
                 <th key={i} onClick={() => handleSort(item)}>
-                  {item}
+                  {handleIcon(item)}
                 </th>
               );
             })}
@@ -125,7 +127,7 @@ const TableComp = () => {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
