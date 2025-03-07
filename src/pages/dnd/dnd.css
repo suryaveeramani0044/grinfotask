@@ -1,13 +1,24 @@
 .dnd-container {
   display: flex;
+  padding: 30px;
 }
 
 .todo {
   background: blue;
+  padding: 10px;
+  width: 300px;
 }
 
 .progrss {
   background: yellow;
+  padding: 10px;
+  width: 300px;
+}
+
+.complete {
+  background: red;
+  padding: 10px;
+  width: 300px;
 }
 
 .list-item {
@@ -15,4 +26,5 @@
   color: white;
   padding: 10px;
   border-radius: 3px;
+  margin-bottom: 5px;
 }

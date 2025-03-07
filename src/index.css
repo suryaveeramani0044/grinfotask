@@ -63,3 +63,8 @@ input {
 select {
   padding: 8px;
 }
+header {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+}

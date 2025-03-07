@@ -9,10 +9,6 @@ const TableComp = () => {
   const role = ["MERN STACK", "HR", "TESTER"];
   const header = ["Name", "Emp", "Role"];
 
-  //modal
-  const [isOpen, setOpen] = useState(false);
-  const [isOpen1, setOpen1] = useState(false);
-
   useEffect(() => {
     let filterData = [];
     if (search?.toString()?.trim() === "" || filter === "All") {
@@ -131,31 +127,6 @@ const TableComp = () => {
           })}
         </tbody>
       </table>
-      <Modal
-        name="Modal 1"
-        isOpen={isOpen}
-        setOpen={setOpen}
-        title="Join our Team"
-        content="Join us for Latest update Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-      >
-        <div>
-          <input placeholder="Email" />
-          <br />
-          <button className="subscribe">Subscribe</button>
-        </div>
-      </Modal>
-      <Modal
-        name="Modal 2"
-        isOpen={isOpen1}
-        setOpen={setOpen1}
-        title="Conformation"
-        content="Are you sure you want share this post on your social media ? sharing this content will let your friends and followers know about it"
-      >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <button className="cancel">Cancel</button>{" "}
-          <button className="subscribe">Subscribe</button>
-        </div>
-      </Modal>
     </div>
   );
 };
